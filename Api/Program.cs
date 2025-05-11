@@ -1,4 +1,5 @@
 using Api.Controllers;
+using Api.Infrastructure;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -32,6 +33,10 @@ builder.Services.Scan(scan => scan
     .AddClasses()
     .AsImplementedInterfaces()
     .WithScopedLifetime());
+
+//Register configuration settings
+builder.Services.Configure<PaycheckSettings>(builder.Configuration.GetSection("PaycheckSettings"));
+
 
 var app = builder.Build();
 

@@ -1,15 +1,17 @@
 ﻿using Api.Dtos.Paycheck;
+using Api.Infrastructure;
 using Api.Models;
 using Api.Repositories;
 using Mapster;
+using Microsoft.Extensions.Options;
 
 namespace Api.Services;
 
-public class PaycheckService(IEmployeesRepository employeesRepository) : IPaycheckService
+public class PaycheckService(IEmployeesRepository employeesRepository, IOptions<PaycheckSettings> paycheckSettings) : IPaycheckService
 {
-    private const int NumberOfPaychecksPerYear = 26;
+    public readonly IEmployeesRepository employeesRepository = employeesRepository;
 
-    public IEmployeesRepository employeesRepository = employeesRepository;
+    public readonly PaycheckSettings paycheckSettings = paycheckSettings.Value;
 
     public GetPaycheckDto? Get(int id, CancellationToken cancellationToken = default)
     {
@@ -47,25 +49,25 @@ public class PaycheckService(IEmployeesRepository employeesRepository) : IPayche
         //employee annual salary
         var totalAmount = employee.Salary;
         //employees have a base cost of $1,000 per month (for benefits)
-        totalAmount -= 1000 * 12;
+        totalAmount -= paycheckSettings.EmployeeBaseCost * 12;
         //each dependent represents an additional $600 cost per month (for benefits)
-        totalAmount -= employee.Dependents.Count * 600 * 12;
+        totalAmount -= employee.Dependents.Count * paycheckSettings.DependentBaseCost * 12;
         //employees that make more than $80,000 per year will incur an additional 2% of their yearly salary in benefits costs
-        if (employee.Salary > 80000)
+        if (employee.Salary > paycheckSettings.EmployeeYearLimit)
         {
-            totalAmount -= employee.Salary * 0.02m;
+            totalAmount -= employee.Salary * paycheckSettings.EmployeeAdditionalCost;
         }
         //dependents that are over 50 years old will incur an additional $200 per month
-        var dependantsOverFifty = employee.Dependents.Count(dependent => (new DateTime((DateTime.Now - dependent.DateOfBirth).Ticks).Year - 1) > 50);
+        var dependantsOverFifty = employee.Dependents.Count(dependent => (new DateTime((DateTime.Now - dependent.DateOfBirth).Ticks).Year - 1) > paycheckSettings.DependentAgeLimit);
 
-        totalAmount -= dependantsOverFifty * 200 * 12;
+        totalAmount -= dependantsOverFifty * paycheckSettings.DependentAdditionalCost * 12;
 
         //26 paychecks per year with deductions spread as evenly as possible on each paycheck
-        totalAmount /= NumberOfPaychecksPerYear;
+        totalAmount /= paycheckSettings.NumberOfPaychecksPerYear;
 
         var result = new List<Paycheck>();
 
-        for (var i = 1; i <= NumberOfPaychecksPerYear; i++)
+        for (var i = 1; i <= paycheckSettings.NumberOfPaychecksPerYear; i++)
         {
             var week = i * 2;
 

@@ -8,7 +8,7 @@ public class BaseRepositoryService<T1, T2, T3>(T1 baseRepository) : IBaseReposit
     where T2 : class
     where T3 : class
 {
-    protected T1 baseRepository = baseRepository;
+    protected readonly T1 baseRepository = baseRepository;
 
     public T3? Get(int id, CancellationToken cancellationToken = default) => baseRepository.Get(id, cancellationToken).Adapt<T3>();
 

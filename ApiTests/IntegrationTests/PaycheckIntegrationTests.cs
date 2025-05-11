@@ -20,7 +20,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName =  "James",
             Week = 2,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id =  1004,
@@ -28,7 +28,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName =  "James",
             Week = 4,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id =  1006,
@@ -36,7 +36,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName =  "James",
             Week = 6,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id =  1008,
@@ -44,7 +44,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName =  "James",
             Week = 8,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id =  1010,
@@ -52,7 +52,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName =  "James",
             Week = 10,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id =  1012,
@@ -60,7 +60,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName =  "James",
             Week = 12,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id =  1014,
@@ -68,7 +68,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName =  "James",
             Week = 14,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id =  1016,
@@ -76,7 +76,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName =  "James",
             Week = 16,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id =  1018,
@@ -84,7 +84,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName =  "James",
             Week = 18,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id =  1020,
@@ -92,7 +92,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName =  "James",
             Week = 20,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id =  1022,
@@ -100,7 +100,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName =  "James",
             Week = 22,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id =  1024,
@@ -108,7 +108,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName =  "James",
             Week = 24,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id =  1026,
@@ -116,7 +116,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName =  "James",
             Week = 26,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id =  1028,
@@ -124,7 +124,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName =  "James",
             Week = 28,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id =  1030,
@@ -132,7 +132,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName =  "James",
             Week = 30,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id =  1032,
@@ -140,7 +140,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName =  "James",
             Week = 32,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id =  1034,
@@ -148,7 +148,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName =  "James",
             Week = 34,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id =  1036,
@@ -156,7 +156,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName =  "James",
             Week = 36,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id =  1038,
@@ -164,7 +164,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName =  "James",
             Week = 38,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id =  1040,
@@ -172,7 +172,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName =  "James",
             Week = 40,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id =  1042,
@@ -180,7 +180,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName =  "James",
             Week = 42,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id =  1044,
@@ -188,7 +188,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName =  "James",
             Week = 44,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id =  1046,
@@ -196,7 +196,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName =  "James",
             Week = 46,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id =  1048,
@@ -204,7 +204,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName =  "James",
             Week = 48,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id =  1050,
@@ -212,7 +212,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName =  "James",
             Week = 50,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id =  1052,
@@ -220,7 +220,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName =  "James",
             Week = 52,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id =  2002,
@@ -654,7 +654,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName = "James",
             Week = 2,
             Year = DateTime.Now.Year,
-            TotalAmount = 2439.2688461538461538461538462m
+            TotalAmount = 2381.2527m
         };
         await response.ShouldReturn(HttpStatusCode.OK, paycheck);
     }
@@ -678,7 +678,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName = "James",
             Week = 2,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id = 1004,
@@ -686,7 +686,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName = "James",
             Week = 4,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id = 1006,
@@ -694,7 +694,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName = "James",
             Week = 6,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id = 1008,
@@ -702,7 +702,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName = "James",
             Week = 8,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id = 1010,
@@ -710,7 +710,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName = "James",
             Week = 10,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id = 1012,
@@ -718,7 +718,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName = "James",
             Week = 12,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id = 1014,
@@ -726,7 +726,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName = "James",
             Week = 14,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id = 1016,
@@ -734,7 +734,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName = "James",
             Week = 16,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id = 1018,
@@ -742,7 +742,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName = "James",
             Week = 18,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id = 1020,
@@ -750,7 +750,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName = "James",
             Week = 20,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id = 1022,
@@ -758,7 +758,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName = "James",
             Week = 22,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id = 1024,
@@ -766,7 +766,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName = "James",
             Week = 24,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id = 1026,
@@ -774,7 +774,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName = "James",
             Week = 26,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id = 1028,
@@ -782,7 +782,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName = "James",
             Week = 28,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id = 1030,
@@ -790,7 +790,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName = "James",
             Week = 30,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id = 1032,
@@ -798,7 +798,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName = "James",
             Week = 32,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id = 1034,
@@ -806,7 +806,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName = "James",
             Week = 34,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id = 1036,
@@ -814,7 +814,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName = "James",
             Week = 36,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id = 1038,
@@ -822,7 +822,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName = "James",
             Week = 38,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id = 1040,
@@ -830,7 +830,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName = "James",
             Week = 40,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id = 1042,
@@ -838,7 +838,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName = "James",
             Week = 42,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id = 1044,
@@ -846,7 +846,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName = "James",
             Week = 44,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id = 1046,
@@ -854,7 +854,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName = "James",
             Week = 46,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id = 1048,
@@ -862,7 +862,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName = "James",
             Week = 48,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id = 1050,
@@ -870,7 +870,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName = "James",
             Week = 50,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         },
         new() {
             Id = 1052,
@@ -878,7 +878,7 @@ public class PaycheckIntegrationTests : IntegrationTest
             EmployeeLastName = "James",
             Week = 52,
             Year =  DateTime.Now.Year,
-            TotalAmount =  2439.2688461538461538461538462m
+            TotalAmount =  2381.2527m
         }
         };
         await response.ShouldReturn(HttpStatusCode.OK, paychecks);

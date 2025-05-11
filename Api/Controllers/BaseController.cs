@@ -8,5 +8,5 @@ namespace Api.Controllers;
 public class BaseController<T>(IBaseService<T> baseService) : ControllerBase
     where T : class
 {
-    protected IBaseService<T> baseService = baseService;
+    protected readonly IBaseService<T> baseService = baseService;
 }

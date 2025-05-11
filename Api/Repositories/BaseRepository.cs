@@ -5,7 +5,7 @@ namespace Api.Repositories;
 public class BaseRepository<T>(IBenefitsContext benefitsContext) : IBaseRepository<T>
     where T : class
 {
-    protected IBenefitsContext benefitsContext = benefitsContext;
+    protected readonly IBenefitsContext benefitsContext = benefitsContext;
 
     public virtual T? Get(int id, CancellationToken cancellationToken = default)
     {
