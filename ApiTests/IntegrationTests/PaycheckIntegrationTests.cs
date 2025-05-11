@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Api.Dtos.Paycheck;
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
-using Api.Dtos.Paycheck;
 using Xunit;
 
 namespace ApiTests.IntegrationTests;

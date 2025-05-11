@@ -12,7 +12,7 @@ public class BaseRepositoryService<T1, T2, T3>(T1 baseRepository, IMapper mapper
 
     protected IMapper mapper = mapper;
 
-    public T3? Get(int id, CancellationToken cancellationToken = default) => mapper.Map<T3>(baseRepository.Get(id, cancellationToken)) ;
+    public T3? Get(int id, CancellationToken cancellationToken = default) => mapper.Map<T3>(baseRepository.Get(id, cancellationToken));
 
     public List<T3> GetAll(CancellationToken cancellationToken = default) => mapper.Map<List<T3>>(baseRepository.GetAll(cancellationToken));
 }

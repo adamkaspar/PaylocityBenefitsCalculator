@@ -1,5 +1,4 @@
 ﻿using Api.Dtos.Dependent;
-using Api.Models;
 
 namespace Api.Services;
 

@@ -1,7 +1,4 @@
-using Api;
-using Api.IoC;
-using Autofac;
-using Autofac.Extensions.DependencyInjection;
+using Api.Controllers;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -32,11 +29,12 @@ builder.Services.AddCors(options =>
 //Register AutoMapper as mapping framework
 builder.Services.AddAutoMapper(typeof(Program));
 
-//Register Autofac service provider factory
-builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
-
-//Register Autofac modules
-builder.Host.ConfigureContainer<ContainerBuilder>(builder => builder.RegisterModule(new ApiModule()));
+//Register all types as implemented Interfaces using Scrutor library
+builder.Services.Scan(scan => scan
+    .FromAssemblyOf<DependentsController>()
+    .AddClasses()
+    .AsImplementedInterfaces()
+    .WithScopedLifetime());
 
 var app = builder.Build();
 

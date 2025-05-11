@@ -1,11 +1,10 @@
+using Api.Dtos.Dependent;
+using Api.Dtos.Employee;
+using Api.Enums;
 using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
-using Api.Dtos.Dependent;
-using Api.Dtos.Employee;
-using Api.Enums;
-using Api.Models;
 using Xunit;
 
 namespace ApiTests.IntegrationTests;
