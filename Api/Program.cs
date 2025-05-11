@@ -26,9 +26,6 @@ builder.Services.AddCors(options =>
         policy => { policy.WithOrigins("http://localhost:3000", "http://localhost"); });
 });
 
-//Register AutoMapper as mapping framework
-builder.Services.AddAutoMapper(typeof(Program));
-
 //Register all types as implemented Interfaces using Scrutor library
 builder.Services.Scan(scan => scan
     .FromAssemblyOf<DependentsController>()

@@ -1,11 +1,11 @@
 ﻿using Api.Dtos.Paycheck;
 using Api.Models;
 using Api.Repositories;
-using AutoMapper;
+using Mapster;
 
 namespace Api.Services;
 
-public class PaycheckService(IEmployeesRepository employeesRepository, IMapper mapper) : IPaycheckService
+public class PaycheckService(IEmployeesRepository employeesRepository) : IPaycheckService
 {
     private const int NumberOfPaychecksPerYear = 26;
 
@@ -24,7 +24,7 @@ public class PaycheckService(IEmployeesRepository employeesRepository, IMapper m
         var employees = employeesRepository.GetAll();
         var result = new List<GetPaycheckDto>();
 
-        employees.ForEach(employee => result.AddRange(mapper.Map<List<GetPaycheckDto>>(ComputePaychecks(employee))));
+        employees.ForEach(employee => result.AddRange(ComputePaychecks(employee).Adapt<List<GetPaycheckDto>>()));
 
         return result;
     }
@@ -36,7 +36,7 @@ public class PaycheckService(IEmployeesRepository employeesRepository, IMapper m
 
         if (employee != null)
         {
-            result.AddRange(mapper.Map<List<GetPaycheckDto>>(ComputePaychecks(employee)));
+            result.AddRange(ComputePaychecks(employee).Adapt<List<GetPaycheckDto>>());
         }
 
         return result;
