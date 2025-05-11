@@ -1,6 +1,8 @@
-﻿namespace Api;
+﻿using Api.Dtos.Paycheck;
 
-public interface IPaycheckService : IBaseService<Paycheck>
+namespace Api.Services;
+
+public interface IPaycheckService : IBaseService<GetPaycheckDto>
 {
-    List<Paycheck> GetByEmployeeId(int id);
+    List<GetPaycheckDto> GetByEmployeeId(int id, CancellationToken cancellationToken = default);
 }

@@ -1,4 +1,5 @@
 using Api;
+using Api.IoC;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;

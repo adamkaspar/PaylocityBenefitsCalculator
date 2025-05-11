@@ -1,65 +1,55 @@
-﻿using Api.Models;
-using AutoMapper;
+﻿using Api.Dtos.Paycheck;
+using Api.Infrastructure;
+using Api.Services;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
-namespace Api;
+namespace Api.Controllers;
 
-public class PaychecksController : BaseController<Paycheck>
+public class PaychecksController(IPaycheckService paycheckService) : BaseController<GetPaycheckDto>(paycheckService)
 {
-    public PaychecksController(IPaycheckService paycheckService, IMapper mapper) : base(paycheckService, mapper) { }
-
     [SwaggerOperation(Summary = "Get paycheck by id")]
     [HttpGet("{id}")]
-    public async Task<ActionResult<ApiResponse<GetPaycheckDto>>> Get(int id)
+    public async Task<ActionResult<ApiResponse<GetPaycheckDto>>> Get(int id, CancellationToken cancellationToken = default)
     {
-        var paycheck = BaseService.Get(id);
-        var paycheckDto = Mapper.Map<GetPaycheckDto>(paycheck);
-
-        var isSuccess = paycheck != null;
+        var paycheckDto = baseService.Get(id, cancellationToken);
 
         var result = new ApiResponse<GetPaycheckDto>
         {
             Data = paycheckDto,
-            Success = isSuccess
+            Success = paycheckDto != null
         };
 
-        return isSuccess ? Ok(result) : NotFound(result);
+        return result.Success ? Ok(result) : NotFound(result);
     }
 
     [SwaggerOperation(Summary = "Get all paychecks")]
     [HttpGet("")]
-    public async Task<ActionResult<ApiResponse<List<GetPaycheckDto>>>> GetAll()
+    public async Task<ActionResult<ApiResponse<List<GetPaycheckDto>>>> GetAll(CancellationToken cancellationToken = default)
     {
-        var paychecks = BaseService.GetAll();
-        var paychecksDto = Mapper.Map<List<GetPaycheckDto>>(paychecks);
-
-        var isSuccess = paychecks != null;
+        var paychecksDto = baseService.GetAll(cancellationToken);
 
         var result = new ApiResponse<List<GetPaycheckDto>>
         {
             Data = paychecksDto,
-            Success = isSuccess
+            Success = paychecksDto.Count > 0
         };
 
-        return isSuccess ? Ok(result) : NotFound(result);
+        return result.Success ? Ok(result) : NotFound(result);
     }
 
     [SwaggerOperation(Summary = "Get paychecks by employee id")]
     [HttpGet("GetByEmployeeId/{id}")]
-    public async Task<ActionResult<ApiResponse<List<GetPaycheckDto>>>> GetByEmployeeId(int id)
+    public async Task<ActionResult<ApiResponse<List<GetPaycheckDto>>>> GetByEmployeeId(int id, CancellationToken cancellationToken = default)
     {
-        var paychecks = ((IPaycheckService)BaseService).GetByEmployeeId(id);
-        var paychecksDto = Mapper.Map<List<GetPaycheckDto>>(paychecks);
-
-        var isSuccess = paychecks != null;
+        var paychecksDto = ((IPaycheckService)baseService).GetByEmployeeId(id, cancellationToken);
 
         var result = new ApiResponse<List<GetPaycheckDto>>
         {
             Data = paychecksDto,
-            Success = isSuccess
+            Success = paychecksDto.Count > 0
         };
 
-        return isSuccess ? Ok(result) : NotFound(result);
+        return result.Success ? Ok(result) : NotFound(result);
     }
 }

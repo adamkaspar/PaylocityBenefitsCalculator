@@ -1,8 +1,9 @@
-﻿using Api.Models;
+﻿using Api.Dtos.Dependent;
+using Api.Models;
+using Api.Repositories;
+using AutoMapper;
 
-namespace Api;
+namespace Api.Services;
 
-public class DependentsService : BaseRepositoryService<IDependentsRepository, Dependent>, IDependentsService
-{
-    public DependentsService(IDependentsRepository dependentsRepository) : base(dependentsRepository) { }
-}
+public class DependentsService(IDependentsRepository dependentsRepository, IMapper mapper)
+    : BaseRepositoryService<IDependentsRepository, Dependent, GetDependentDto>(dependentsRepository, mapper), IDependentsService;

@@ -1,10 +1,7 @@
-﻿using Api.Models;
+﻿namespace Api.Models;
 
-namespace Api;
-
-public class Paycheck
+public class Paycheck : BaseModel
 {
-    public int Id { get; set; }
     public Employee Employee { get; set; }
     public int Week { get; set; }
     public int Year { get; set; }

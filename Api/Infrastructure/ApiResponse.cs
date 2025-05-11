@@ -1,4 +1,4 @@
-﻿namespace Api.Models;
+﻿namespace Api.Infrastructure;
 
 public class ApiResponse<T>
 {

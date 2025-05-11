@@ -1,8 +1,9 @@
-﻿using Api.Models;
+﻿using Api.Dtos.Dependent;
+using Api.Models;
 
-namespace Api;
+namespace Api.Services;
 
-public interface IDependentsService : IBaseRepositoryService<Dependent>
+public interface IDependentsService : IBaseRepositoryService<GetDependentDto>
 {
 
 }

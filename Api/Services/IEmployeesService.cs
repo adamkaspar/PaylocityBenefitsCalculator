@@ -1,8 +1,8 @@
-﻿using Api.Models;
+﻿using Api.Dtos.Employee;
 
-namespace Api;
+namespace Api.Services;
 
-public interface IEmployeesService : IBaseRepositoryService<Employee>
+public interface IEmployeesService : IBaseRepositoryService<GetEmployeeDto>
 {
 
 }

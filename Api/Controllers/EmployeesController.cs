@@ -1,49 +1,42 @@
 ﻿using Api.Dtos.Employee;
-using Api.Models;
-using AutoMapper;
+using Api.Infrastructure;
+using Api.Services;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace Api.Controllers;
 
-public class EmployeesController : BaseController<Employee>
+public class EmployeesController(IEmployeesService employeesService)
+    : BaseController<GetEmployeeDto>(employeesService)
 {
-    public EmployeesController(IEmployeesService employeesService, IMapper mapper) : base(employeesService, mapper) { }
-
     [SwaggerOperation(Summary = "Get employee by id")]
     [HttpGet("{id}")]
-    public async Task<ActionResult<ApiResponse<GetEmployeeDto>>> Get(int id)
+    public async Task<ActionResult<ApiResponse<GetEmployeeDto>>> Get(int id, CancellationToken cancellationToken = default)
     {
-        var employee = BaseService.Get(id);
-        var employeeDto = Mapper.Map<GetEmployeeDto>(employee);
-
-        var isSuccess = employee != null;
+        var employeeDto = baseService.Get(id, cancellationToken);
 
         var result = new ApiResponse<GetEmployeeDto>
         {
             Data = employeeDto,
-            Success = isSuccess
+            Success = employeeDto != null
         };
 
-        return isSuccess ? Ok(result) : NotFound(result);
+        return result.Success ? Ok(result) : NotFound(result);
     }
 
     [SwaggerOperation(Summary = "Get all employees")]
     [HttpGet("")]
-    public async Task<ActionResult<ApiResponse<List<GetEmployeeDto>>>> GetAll()
+    public async Task<ActionResult<ApiResponse<List<GetEmployeeDto>>>> GetAll(CancellationToken cancellationToken = default)
     {
         //task: use a more realistic production approach
-        var employees = BaseService.GetAll();
-        var employeesDto = Mapper.Map<List<GetEmployeeDto>>(employees);
-
-        var isSuccess = employees != null;
+        var employeesDto = baseService.GetAll(cancellationToken);
 
         var result = new ApiResponse<List<GetEmployeeDto>>
         {
             Data = employeesDto,
-            Success = isSuccess
+            Success = employeesDto.Count > 0
         };
 
-        return isSuccess ? Ok(result) : NotFound(result);
+        return result.Success ? Ok(result) : NotFound(result);
     }
 }

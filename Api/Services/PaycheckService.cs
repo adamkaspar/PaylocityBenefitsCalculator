@@ -1,20 +1,17 @@
-﻿
+﻿using Api.Dtos.Paycheck;
 using Api.Models;
+using Api.Repositories;
+using AutoMapper;
 
-namespace Api;
+namespace Api.Services;
 
-public class PaycheckService : IPaycheckService
+public class PaycheckService(IEmployeesRepository employeesRepository, IMapper mapper) : IPaycheckService
 {
     private const int NumberOfPaychecksPerYear = 26;
 
-    protected IEmployeesService EmployeesService { get; }
+    public IEmployeesRepository employeesRepository = employeesRepository;
 
-    public PaycheckService(IEmployeesService employeesService)
-    {
-        EmployeesService = employeesService;
-    }
-
-    public Paycheck Get(int id)
+    public GetPaycheckDto? Get(int id, CancellationToken cancellationToken = default)
     {
         var paychecks = GetAll();
         var result = paychecks.FirstOrDefault(paycheck => paycheck.Id == id);
@@ -22,31 +19,31 @@ public class PaycheckService : IPaycheckService
         return result;
     }
 
-    public List<Paycheck> GetAll()
+    public List<GetPaycheckDto> GetAll(CancellationToken cancellationToken = default)
     {
-        var employees = EmployeesService.GetAll();
-        var result = new List<Paycheck>();
+        var employees = employeesRepository.GetAll();
+        var result = new List<GetPaycheckDto>();
 
-        employees.ForEach(employee => result.AddRange(ComputePaychecks(employee)));
+        employees.ForEach(employee => result.AddRange(mapper.Map<List<GetPaycheckDto>>(ComputePaychecks(employee))));
 
         return result;
     }
 
-    public List<Paycheck> GetByEmployeeId(int id)
+    public List<GetPaycheckDto> GetByEmployeeId(int id, CancellationToken cancellationToken = default)
     {
-        var employee = EmployeesService.Get(id);
-        var result = ComputePaychecks(employee);
+        var employee = employeesRepository.Get(id);
+        var result = new List<GetPaycheckDto>();
 
-        return result;
-    }
-
-    private List<Paycheck> ComputePaychecks(Employee employee)
-    {
-        if (employee == null)
+        if (employee != null)
         {
-            return null;
+            result.AddRange(mapper.Map<List<GetPaycheckDto>>(ComputePaychecks(employee)));
         }
 
+        return result;
+    }
+
+    private List<Paycheck> ComputePaychecks(Employee employee, CancellationToken cancellationToken = default)
+    {
         //employee annual salary
         var totalAmount = employee.Salary;
         //employees have a base cost of $1,000 per month (for benefits)

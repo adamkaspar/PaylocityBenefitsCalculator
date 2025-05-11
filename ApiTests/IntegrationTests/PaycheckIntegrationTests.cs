@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
-using Api;
+using Api.Dtos.Paycheck;
 using Xunit;
 
 namespace ApiTests.IntegrationTests;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using Api.Dtos.Dependent;
+using Api.Enums;
 using Api.Models;
 using Xunit;
 

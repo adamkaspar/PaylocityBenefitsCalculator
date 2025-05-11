@@ -1,10 +1,7 @@
-﻿using Api.Dtos.Employee;
+﻿namespace Api.Dtos.Paycheck;
 
-namespace Api;
-
-public class GetPaycheckDto
+public class GetPaycheckDto : BaseDto
 {
-    public int Id { get; set; }
     public string EmployeeFirstName { get; set; }
     public string EmployeeLastName { get; set; }
     public int Week { get; set; }

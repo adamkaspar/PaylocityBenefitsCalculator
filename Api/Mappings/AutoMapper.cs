@@ -1,9 +1,10 @@
 ﻿using Api.Dtos.Dependent;
 using Api.Dtos.Employee;
+using Api.Dtos.Paycheck;
 using Api.Models;
 using AutoMapper;
 
-namespace Api;
+namespace Api.Mappings;
 
 public class AutoMapper : Profile
 {

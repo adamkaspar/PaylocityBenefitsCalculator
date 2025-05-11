@@ -1,15 +1,18 @@
-﻿namespace Api;
+﻿using Api.Repositories;
+using AutoMapper;
 
-public class BaseRepositoryService<T1, T2> : IBaseRepositoryService<T2> where T1 : IBaseRepository<T2> where T2 : class
+namespace Api.Services;
+
+public class BaseRepositoryService<T1, T2, T3>(T1 baseRepository, IMapper mapper) : IBaseRepositoryService<T3>
+    where T1 : IBaseRepository<T2>
+    where T2 : class
+    where T3 : class
 {
-    protected T1 BaseRepository { get; }
+    protected T1 baseRepository = baseRepository;
 
-    public BaseRepositoryService(T1 baseRepository)
-    {
-        BaseRepository = baseRepository;
-    }
+    protected IMapper mapper = mapper;
 
-    public T2 Get(int id) => BaseRepository.Get(id);
+    public T3? Get(int id, CancellationToken cancellationToken = default) => mapper.Map<T3>(baseRepository.Get(id, cancellationToken)) ;
 
-    public List<T2> GetAll() => BaseRepository.GetAll();
+    public List<T3> GetAll(CancellationToken cancellationToken = default) => mapper.Map<List<T3>>(baseRepository.GetAll(cancellationToken));
 }

@@ -1,48 +1,41 @@
 ﻿using Api.Dtos.Dependent;
-using Api.Models;
-using AutoMapper;
+using Api.Infrastructure;
+using Api.Services;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace Api.Controllers;
 
-public class DependentsController : BaseController<Dependent>
+public class DependentsController(IDependentsService dependentsService)
+    : BaseController<GetDependentDto>(dependentsService)
 {
-    public DependentsController(IDependentsService dependentsService, IMapper mapper) : base(dependentsService, mapper) { }
-
     [SwaggerOperation(Summary = "Get dependent by id")]
     [HttpGet("{id}")]
-    public async Task<ActionResult<ApiResponse<GetDependentDto>>> Get(int id)
+    public async Task<ActionResult<ApiResponse<GetDependentDto>>> Get(int id, CancellationToken cancellationToken = default)
     {
-        var dependent = BaseService.Get(id);
-        var dependentDto = Mapper.Map<GetDependentDto>(dependent);
-
-        var isSuccess = dependent != null;
+        var dependentDto = baseService.Get(id);
 
         var result = new ApiResponse<GetDependentDto>
         {
             Data = dependentDto,
-            Success = isSuccess
+            Success = dependentDto != null
         };
 
-        return isSuccess ? Ok(result) : NotFound(result);
+        return result.Success ? Ok(result) : NotFound(result);
     }
 
     [SwaggerOperation(Summary = "Get all dependents")]
     [HttpGet("")]
-    public async Task<ActionResult<ApiResponse<List<GetDependentDto>>>> GetAll()
+    public async Task<ActionResult<ApiResponse<List<GetDependentDto>>>> GetAll(CancellationToken cancellationToken = default)
     {
-        var dependents = BaseService.GetAll();
-        var dependentsDto = Mapper.Map<List<GetDependentDto>>(dependents);
-
-        var isSuccess = dependents != null;
+        var dependentsDto = baseService.GetAll();
 
         var result = new ApiResponse<List<GetDependentDto>>
         {
             Data = dependentsDto,
-            Success = isSuccess
+            Success = dependentsDto.Count > 0
         };
 
-        return isSuccess ? Ok(result) : NotFound(result);
+        return result.Success ? Ok(result) : NotFound(result);
     }
 }

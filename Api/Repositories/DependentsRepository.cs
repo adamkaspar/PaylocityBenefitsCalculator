@@ -1,12 +1,12 @@
-﻿using Api.Models;
+﻿using Api.Dal;
+using Api.Models;
 
-namespace Api;
+namespace Api.Repositories;
 
-public class DependentsRepository : BaseRepository<Dependent>, IDependentsRepository
+public class DependentsRepository(IBenefitsContext benefitsContext)
+    : BaseRepository<Dependent>(benefitsContext), IDependentsRepository
 {
-    public DependentsRepository(IBenefitsContext benefitsContext) : base(benefitsContext) { }
+    public override Dependent? Get(int id, CancellationToken cancellationToken = default) => benefitsContext.Dependents.FirstOrDefault(employee => employee.Id == id);
 
-    public override Dependent Get(int id) => BenefitsContext.Dependents.FirstOrDefault(employee => employee.Id == id);
-
-    public override List<Dependent> GetAll() => BenefitsContext.Dependents;
+    public override List<Dependent> GetAll(CancellationToken cancellationToken = default) => benefitsContext.Dependents;
 }

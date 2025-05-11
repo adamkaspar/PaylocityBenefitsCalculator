@@ -1,6 +1,6 @@
 ﻿using Autofac;
 
-namespace Api;
+namespace Api.IoC;
 
 public class ApiModule : Module
 {

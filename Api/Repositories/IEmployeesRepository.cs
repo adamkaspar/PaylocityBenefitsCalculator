@@ -1,6 +1,6 @@
 ﻿using Api.Models;
 
-namespace Api;
+namespace Api.Repositories;
 
 public interface IEmployeesRepository : IBaseRepository<Employee>
 {

@@ -1,22 +1,20 @@
-﻿namespace Api;
+﻿using Api.Dal;
 
-public class BaseRepository<T> : IBaseRepository<T> where T : class
+namespace Api.Repositories;
+
+public class BaseRepository<T>(IBenefitsContext benefitsContext) : IBaseRepository<T>
+    where T : class
 {
-    protected IBenefitsContext BenefitsContext { get; private set; }
+    protected IBenefitsContext benefitsContext = benefitsContext;
 
-    public BaseRepository(IBenefitsContext benefitsContext)
-    {
-        BenefitsContext = benefitsContext;
-    }
-
-    public virtual T Get(int id)
+    public virtual T? Get(int id, CancellationToken cancellationToken = default)
     {
         //Here should be Get from specific DbSet, based on generic type, but in this example I dont work with DbSets, 
         //so I keep it umimplemented with concrete implementation in derived types.
         throw new NotImplementedException();
     }
 
-    public virtual List<T> GetAll()
+    public virtual List<T> GetAll(CancellationToken cancellationToken = default)
     {
         //Here should be GetAll from specific DbSet, based on generic type, but in this example I dont work with DbSets, 
         //so I keep it umimplemented with concrete implementation in derived types.

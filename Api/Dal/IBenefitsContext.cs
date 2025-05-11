@@ -1,6 +1,6 @@
 ﻿using Api.Models;
 
-namespace Api;
+namespace Api.Dal;
 
 public interface IBenefitsContext
 {
