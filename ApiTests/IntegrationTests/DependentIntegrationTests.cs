@@ -77,4 +77,3 @@ public class DependentIntegrationTests : IntegrationTest
         await response.ShouldReturn(HttpStatusCode.NotFound);
     }
 }
-

@@ -98,7 +98,7 @@ public class EmployeeIntegrationTests : IntegrationTest
         };
         await response.ShouldReturn(HttpStatusCode.OK, employee);
     }
-    
+
     [Fact]
     //task: make test pass
     public async Task WhenAskedForANonexistentEmployee_ShouldReturn404()
@@ -107,4 +107,3 @@ public class EmployeeIntegrationTests : IntegrationTest
         await response.ShouldReturn(HttpStatusCode.NotFound);
     }
 }
-
