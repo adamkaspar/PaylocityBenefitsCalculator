@@ -1,11 +1,11 @@
-﻿using Api.Dal;
+﻿using Api.DataAccess;
 
 namespace Api.Repositories;
 
-public class BaseRepository<T>(IBenefitsContext benefitsContext) : IBaseRepository<T>
+public class BaseRepository<T>(IBenefitsDbContext benefitsContext) : IBaseRepository<T>
     where T : class
 {
-    protected readonly IBenefitsContext benefitsContext = benefitsContext;
+    protected readonly IBenefitsDbContext benefitsContext = benefitsContext;
 
     public virtual T? Get(int id, CancellationToken cancellationToken = default)
     {

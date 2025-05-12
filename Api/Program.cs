@@ -1,5 +1,7 @@
 using Api.Controllers;
+using Api.DataAccess;
 using Api.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -37,6 +39,8 @@ builder.Services.Scan(scan => scan
 //Register configuration settings
 builder.Services.Configure<PaycheckSettings>(builder.Configuration.GetSection("PaycheckSettings"));
 
+//Register DbContext with In-Memory database
+builder.Services.AddDbContext<BenefitsDbContext>(options => options.UseInMemoryDatabase("BenefitsDb"));
 
 var app = builder.Build();
 
@@ -54,5 +58,13 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+// Initialize the database with sample data
+using var scope = app.Services.CreateScope();
+var services = scope.ServiceProvider;
+
+var context = services.GetRequiredService<BenefitsDbContext>();
+context.Database.EnsureCreated();
+BenefitsDbInitializer.Initialize(context);
 
 app.Run();
