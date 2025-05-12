@@ -4,9 +4,13 @@ namespace Api.BusinessAccessLayer.Dtos.Employee;
 
 public class GetEmployeeDto : BaseDto
 {
-    public string? FirstName { get; set; }
-    public string? LastName { get; set; }
-    public decimal Salary { get; set; }
-    public DateTime DateOfBirth { get; set; }
-    public ICollection<GetDependentDto> Dependents { get; set; } = new List<GetDependentDto>();
+    public required string? FirstName { get; init; }
+
+    public required string? LastName { get; init; }
+
+    public required decimal Salary { get; init; }
+
+    public required DateTime DateOfBirth { get; init; }
+
+    public ICollection<GetDependentDto> Dependents { get; init; } = new List<GetDependentDto>();
 }

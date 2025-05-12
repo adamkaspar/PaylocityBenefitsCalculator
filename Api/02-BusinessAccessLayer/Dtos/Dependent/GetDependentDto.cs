@@ -4,8 +4,11 @@ namespace Api.BusinessAccessLayer.Dtos.Dependent;
 
 public class GetDependentDto : BaseDto
 {
-    public string? FirstName { get; set; }
-    public string? LastName { get; set; }
-    public DateTime DateOfBirth { get; set; }
-    public Relationship Relationship { get; set; }
+    public required string? FirstName { get; init; }
+
+    public required string? LastName { get; init; }
+
+    public required DateTime DateOfBirth { get; init; }
+
+    public required Relationship Relationship { get; init; }
 }
