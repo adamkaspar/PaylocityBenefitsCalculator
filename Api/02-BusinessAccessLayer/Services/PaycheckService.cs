@@ -1,0 +1,138 @@
+﻿using Api.BusinessAccessLayer.Dtos.Paycheck;
+using Api.Common.Infrastructure;
+using Api.DataAccessLayer.Models;
+using Api.DataAccessLayer.Repositories;
+using Mapster;
+using Microsoft.Extensions.Options;
+
+namespace Api.BusinessAccessLayer.Services;
+
+public class PaycheckService(IEmployeesRepository employeesRepository, IOptions<PaycheckSettings> paycheckSettings) : IPaycheckService
+{
+    public readonly IEmployeesRepository employeesRepository = employeesRepository;
+
+    public readonly PaycheckSettings paycheckSettings = paycheckSettings.Value;
+
+    public GetPaycheckDto? GetById(int id)
+    {
+        var paychecks = GetAll();
+        var result = paychecks.FirstOrDefault(paycheck => paycheck.Id == id);
+
+        return result;
+    }
+
+    public async Task<GetPaycheckDto?> GetByIdAsync(int id, CancellationToken cancellationToken = default)
+    {
+        var paychecks = await GetAllAsync(cancellationToken);
+        var result = paychecks.FirstOrDefault(paycheck => paycheck.Id == id);
+
+        return result;
+    }
+
+    public List<GetPaycheckDto> GetAll()
+    {
+        var employees = employeesRepository.GetAll();
+        var result = new List<GetPaycheckDto>();
+
+        employees.ForEach(employee => result.AddRange(ComputePaychecks(employee).Adapt<List<GetPaycheckDto>>()));
+
+        return result;
+    }
+
+    public async Task<List<GetPaycheckDto>> GetAllAsync(CancellationToken cancellationToken = default)
+    {
+        var employees = await employeesRepository.GetAllAsync(cancellationToken);
+        var result = new List<GetPaycheckDto>();
+
+        employees.ForEach(employee => result.AddRange(ComputePaychecks(employee).Adapt<List<GetPaycheckDto>>()));
+
+        return result;
+    }
+
+    public List<GetPaycheckDto> GetByEmployeeId(int id)
+    {
+        var employee = employeesRepository.GetById(id);
+        var result = new List<GetPaycheckDto>();
+
+        if (employee != null)
+        {
+            result.AddRange(ComputePaychecks(employee).Adapt<List<GetPaycheckDto>>());
+        }
+
+        return result;
+    }
+
+    public async Task<List<GetPaycheckDto>> GetByEmployeeIdAsync(int id, CancellationToken cancellationToken = default)
+    {
+        var employee = await employeesRepository.GetByIdAsync(id, cancellationToken);
+        var result = new List<GetPaycheckDto>();
+
+        if (employee != null)
+        {
+            result.AddRange(ComputePaychecks(employee).Adapt<List<GetPaycheckDto>>());
+        }
+
+        return result;
+    }
+
+    public List<GetPaycheckDto> PageAll(int skip, int take)
+    {
+        var employees = employeesRepository.PageAll(skip, take);
+        var result = new List<GetPaycheckDto>();
+
+        employees.ForEach(employee => result.AddRange(ComputePaychecks(employee).Adapt<List<GetPaycheckDto>>()));
+
+        return result;
+    }
+
+    public async Task<List<GetPaycheckDto>> PageAllAsync(int skip, int take, CancellationToken cancellationToken)
+    {
+        var employees = await employeesRepository.PageAllAsync(skip, take, cancellationToken);
+        var result = new List<GetPaycheckDto>();
+
+        employees.ForEach(employee => result.AddRange(ComputePaychecks(employee).Adapt<List<GetPaycheckDto>>()));
+
+        return result;
+    }
+
+    private List<GetPaycheckDto> ComputePaychecks(Employee employee, CancellationToken cancellationToken = default)
+    {
+        //employee annual salary
+        var totalAmount = employee.Salary;
+        //employees have a base cost of $1,000 per month (for benefits)
+        totalAmount -= paycheckSettings.EmployeeBaseCost * 12;
+        //each dependent represents an additional $600 cost per month (for benefits)
+        totalAmount -= employee.Dependents.Count * paycheckSettings.DependentBaseCost * 12;
+        //employees that make more than $80,000 per year will incur an additional 2% of their yearly salary in benefits costs
+        if (employee.Salary > paycheckSettings.EmployeeYearLimit)
+        {
+            totalAmount -= employee.Salary * paycheckSettings.EmployeeAdditionalCost;
+        }
+        //dependents that are over 50 years old will incur an additional $200 per month
+        var dependantsOverFifty = employee.Dependents.Count(dependent => (new DateTime((DateTime.Now - dependent.DateOfBirth).Ticks).Year - 1) > paycheckSettings.DependentAgeLimit);
+
+        totalAmount -= dependantsOverFifty * paycheckSettings.DependentAdditionalCost * 12;
+
+        //26 paychecks per year with deductions spread as evenly as possible on each paycheck
+        totalAmount /= paycheckSettings.NumberOfPaychecksPerYear;
+
+        var result = new List<GetPaycheckDto>();
+
+        for (var i = 1; i <= paycheckSettings.NumberOfPaychecksPerYear; i++)
+        {
+            var week = i * 2;
+
+            result.Add(new GetPaycheckDto
+            {
+                Id = employee.Id * 1000 + week, //computation just for this example, in real application, Id should be generated by Db
+                EmployeeFirstName = employee.FirstName!,
+                EmployeeLastName = employee.LastName!,
+                Week = week,
+                Year = DateTime.Now.Year,
+                TotalAmount = totalAmount
+            });
+        }
+
+        return result;
+    }
+}

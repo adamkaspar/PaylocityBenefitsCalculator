@@ -1,4 +1,4 @@
-﻿using Api.Dtos.Paycheck;
+﻿using Api.BusinessAccessLayer.Dtos.Paycheck;
 using System;
 using System.Collections.Generic;
 using System.Net;

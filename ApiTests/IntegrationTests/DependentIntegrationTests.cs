@@ -1,5 +1,5 @@
-using Api.Dtos.Dependent;
-using Api.Enums;
+using Api.BusinessAccessLayer.Dtos.Dependent;
+using Api.Common.Enums;
 using System;
 using System.Collections.Generic;
 using System.Net;

@@ -1,4 +1,4 @@
-using Api.Infrastructure;
+using Api.Common.Infrastructure;
 using Newtonsoft.Json;
 using System.Net;
 using System.Net.Http;

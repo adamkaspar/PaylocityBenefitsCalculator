@@ -1,6 +1,6 @@
-using Api.Controllers;
-using Api.DataAccess;
-using Api.Infrastructure;
+using Api.Common.Infrastructure;
+using Api.DataAccessLayer.Database;
+using Api.PresentationLayer.Controllers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
