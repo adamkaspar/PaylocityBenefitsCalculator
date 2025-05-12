@@ -104,7 +104,7 @@ public class PaycheckService(IEmployeesRepository employeesRepository, IOptions<
         //each dependent represents an additional $600 cost per month (for benefits)
         totalAmount -= employee.Dependents.Count * paycheckSettings.DependentBaseCost * 12;
         //employees that make more than $80,000 per year will incur an additional 2% of their yearly salary in benefits costs
-        if (employee.Salary > paycheckSettings.EmployeeYearLimit)
+        if (employee.Salary > paycheckSettings.EmployeeBaseCostYearLimit)
         {
             totalAmount -= employee.Salary * paycheckSettings.EmployeeAdditionalCost;
         }

@@ -1,6 +1,7 @@
 using Api.Common.Infrastructure;
 using Api.DataAccessLayer.Database;
 using Api.PresentationLayer.Controllers;
+using Api.PresentationLayer.Middleware;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -66,5 +67,8 @@ var services = scope.ServiceProvider;
 var context = services.GetRequiredService<BenefitsDbContext>();
 context.Database.EnsureCreated();
 BenefitsDbInitializer.Initialize(context);
+
+// Register middleware for error handling
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.Run();

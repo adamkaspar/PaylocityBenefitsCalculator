@@ -12,7 +12,7 @@
 
         public int EmployeeBaseCost { get; set; }
 
-        public int EmployeeYearLimit { get; set; }
+        public int EmployeeBaseCostYearLimit { get; set; }
 
         public decimal EmployeeAdditionalCost { get; set; }
     }
